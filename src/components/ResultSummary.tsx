@@ -39,7 +39,7 @@ export default function ResultSummary() {
 								xmlns="http://www.w3.org/2000/svg"
 								width="18"
 								height="18"
-								viewBox="0 0 32 32"
+								viewBox="0 0 28 28"
 							>
 								<path
 									fill="currentColor"
@@ -58,7 +58,7 @@ export default function ResultSummary() {
 								xmlns="http://www.w3.org/2000/svg"
 								width="18"
 								height="18"
-								viewBox="0 0 24 24"
+								viewBox="0 0 22 22"
 							>
 								<path
 									fill="currentColor"
