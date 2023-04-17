@@ -14,7 +14,7 @@ export default function ResultSummary() {
 			<div className="flex flex-col gap-8 p-8 text-gray-950">
 				<h2 className="text-xl font-semibold">Summary</h2>
 				<div className="flex flex-col gap-2 w-60">
-					<div className="flex justify-between p-4 rounded-md bg-red-500/10">
+					<div className="flex justify-between p-4 rounded-md bg-gradient-to-r from-red-500/10 to-red-200/5">
 						<div className="flex items-center gap-1 font-bold text-red-600">
 							<svg
 								xmlns="http://www.w3.org/2000/svg"
