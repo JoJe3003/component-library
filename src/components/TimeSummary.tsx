@@ -53,9 +53,12 @@ export default function TimeSummary() {
           }
         }}
       />
-      <div className="mt-2">
+      <div className="relative mt-2">
         {time.map((time, i) => (
-          <div key={i} className="odd:bg-gray-200">
+          <div
+            key={i}
+            className="text-right before:absolute before:left-0 before:content-['+'] first:before:content-none odd:bg-gray-200"
+          >
             {time.hours}h {time.minutes}m
           </div>
         ))}
@@ -63,7 +66,7 @@ export default function TimeSummary() {
         {time.length > 0 && (
           <div>
             <hr className="border-t border-black" />
-            <div className="border-b-2 border-double border-black">
+            <div className="border-b-2 border-double border-black before:mr-1 before:content-['=']">
               {sum.hours}h {sum.minutes}m
             </div>
           </div>
