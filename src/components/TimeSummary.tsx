@@ -43,8 +43,9 @@ export default function TimeSummary() {
   return (
     <div className="flex gap-4">
       <textarea
+        contentEditable={true}
         onInput={handleTextAreaInput}
-        className="h-96 w-24 text-right"
+        className="w-24 overflow-hidden text-right"
         // make spaces in the input area into "\n"
         onKeyDown={(e) => {
           if (e.key === " ") {
