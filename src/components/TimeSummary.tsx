@@ -55,7 +55,7 @@ export default function TimeSummary() {
           }
         }}
         placeholder="Enter time.."
-        className="w-24 overflow-hidden rounded-sm border-0 py-1.5 text-right text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 placeholder-shown:h-8"
+        className="w-24 overflow-hidden rounded-sm border-0 py-1.5 text-right text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 placeholder-shown:h-8 [&::-webkit-resizer]:hidden"
       />
       <div className="my-1.5 overflow-hidden rounded-t-sm">
         {time.map((time, i) => (
