@@ -46,6 +46,7 @@ export default function TimeSummary() {
         <textarea
           id="input"
           name="input"
+          inputMode="numeric"
           placeholder="Enter time.."
           contentEditable={true}
           onInput={handleTextAreaInput}
