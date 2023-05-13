@@ -8,9 +8,6 @@ interface Time {
 export default function TimeSummary() {
   const [time, setTime] = useState<Time[]>([]);
   const [sum, setSum] = useState<Time>({ hours: 0, minutes: 0 });
-  const [focus, setFocus] = useState(false);
-  const onFocus = () => setFocus(true);
-  const onBlur = () => setFocus(false);
 
   useEffect(() => {
     const sum = time.reduce(
@@ -53,8 +50,6 @@ export default function TimeSummary() {
             inputMode="numeric"
             placeholder="Enter time.."
             onInput={handleTextAreaInput}
-            onFocus={onFocus}
-            onBlur={onBlur}
             // make spaces in the input area into "\n"
             onKeyDown={(e) => {
               if (e.key === " ") {
@@ -131,26 +126,6 @@ export default function TimeSummary() {
           )}
         </div>
       </div>
-
-      {/* Mobile view */}
-
-      <button
-        className="absolute bottom-4 right-4 block rounded-sm bg-indigo-600 px-4 py-3 text-xl text-white shadow-md hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 md:hidden"
-        onClick={() => {
-          const input = document.getElementById("input") as HTMLTextAreaElement;
-          input.value += "\n";
-          input.focus();
-
-          // dont allow multiple "\n" in a row
-          input.value = input.value.replace(/\n\n/g, "\n");
-          // Dont allow first input to be "\n"
-          if (input.value === "\n") {
-            input.value = "";
-          }
-        }}
-      >
-        New Line
-      </button>
     </div>
   );
 }
