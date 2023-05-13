@@ -42,21 +42,65 @@ export default function TimeSummary() {
 
   return (
     <div className="flex gap-4 scale-[2]">
-      <textarea
-        id="input"
-        name="input"
-        contentEditable={true}
-        onInput={handleTextAreaInput}
-        // make spaces in the input area into "\n"
-        onKeyDown={(e) => {
-          if (e.key === " ") {
-            e.preventDefault();
-            e.currentTarget.value += "\n";
-          }
-        }}
-        placeholder="Enter time.."
-        className="w-24 overflow-hidden rounded-sm border-0 py-1.5 text-right text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 placeholder-shown:h-8 [&::-webkit-resizer]:hidden"
-      />
+      <div className="relative">
+        <textarea
+          id="input"
+          name="input"
+          placeholder="Enter time.."
+          contentEditable={true}
+          onInput={handleTextAreaInput}
+          // make spaces in the input area into "\n"
+          onKeyDown={(e) => {
+            if (e.key === " ") {
+              e.preventDefault();
+              e.currentTarget.value += "\n";
+            }
+            // dont allow any other symbols than numbers and "\n"
+            if (
+              !(
+                (e.key >= "0" && e.key <= "9") ||
+                e.key === "Backspace" ||
+                e.key === "Enter" ||
+                e.key === " " ||
+                e.key === "ArrowUp" ||
+                e.key === "ArrowDown" ||
+                e.key === "ArrowLeft" ||
+                e.key === "ArrowRight" || 
+                e.key === "Tab" ||
+                e.key === "Delete" ||
+                e.key === "Home" || 
+                e.key === "End" ||
+                e.key === "PageUp" ||
+                e.key === "PageDown" ||
+                e.ctrlKey === true
+              )
+            ) {
+              e.preventDefault();
+            }
+          }}
+          onKeyUp={(e) => {
+            if (e.key === "Enter" || e.key === " ") {
+              e.preventDefault();
+              e.currentTarget.value = e.currentTarget.value.replace(
+                /\n\n/g,
+                "\n"
+              );
+            }
+            // dont allow first entry to be "\n"
+            if (e.currentTarget.value === "\n") {
+              e.currentTarget.value = "";
+            }
+          }}
+
+          
+          className="h-full w-24 overflow-hidden rounded-sm border-0 py-1.5 text-right text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-sm placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 placeholder-shown:h-8 [&::-webkit-resizer]:hidden resize-none"
+        />
+        {time.length > 0 && (
+        <span className="absolute -bottom-6 left-11 text-right text-sm text-gray-400 min-w-max">
+          Rows: {time.length}
+        </span>
+      )}
+      </div>
       <div className="my-1.5 overflow-hidden rounded-t-sm">
         {time.map((time, i) => (
           <div
