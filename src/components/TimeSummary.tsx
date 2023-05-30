@@ -44,6 +44,29 @@ export default function TimeSummary() {
       e.preventDefault();
       e.currentTarget.value += "\n";
     }
+
+    // make a map of 10 keys, where the keys are the letters u, i, o, j, k, l, n, m, ",", "." corresponding to the numbers 1-9, 0
+    const numPadMap = {
+      u: "1",
+      i: "2",
+      o: "3",
+      j: "4",
+      k: "5",
+      l: "6",
+      n: "0",
+      m: "7",
+      ",": "8",
+      ".": "9",
+    };
+
+    // if the key pressed is in the map, replace the key with the corresponding value
+    if (e.key in numPadMap) {
+      e.preventDefault();
+      e.currentTarget.value += numPadMap[e.key];
+      // update the state
+      handleTextAreaInput(e);
+    }
+
     // dont allow any inputs other than the list below
     if (
       !(
@@ -61,7 +84,8 @@ export default function TimeSummary() {
         e.key === "End" ||
         e.key === "PageUp" ||
         e.key === "PageDown" ||
-        e.ctrlKey === true
+        e.ctrlKey === true ||
+        e.metaKey === true
       )
     ) {
       e.preventDefault();
