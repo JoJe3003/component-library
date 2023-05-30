@@ -46,7 +46,7 @@ export default function TimeSummary() {
     }
 
     // make a map of 10 keys, where the keys are the letters u, i, o, j, k, l, n, m, ",", "." corresponding to the numbers 1-9, 0
-    const numPadMap = {
+    const numPadMap: { [key: string]: string } = {
       u: "1",
       i: "2",
       o: "3",
@@ -62,7 +62,7 @@ export default function TimeSummary() {
     // if the key pressed is in the map, replace the key with the corresponding value
     if (e.key in numPadMap) {
       e.preventDefault();
-      e.currentTarget.value += numPadMap[e.key];
+      e.currentTarget.value += numPadMap[e.key as keyof typeof numPadMap];
       // update the state
       handleTextAreaInput(e);
     }
